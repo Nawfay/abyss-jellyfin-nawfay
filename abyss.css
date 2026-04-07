@@ -1454,7 +1454,6 @@ div[data-role="controlgroup"] a[data-role="button"]:last-child {
     margin-top: 24px;
 }
 
-.videoOsdBottom .osdControls,
 .nowPlayingBar {
     border-radius: 24px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -1991,22 +1990,21 @@ div[data-role="controlgroup"] a[data-role="button"]:last-child {
     }
 }
 
-/* Backdrop filter support */
-@supports (backdrop-filter: blur(15px)) {
+/* Backdrop filter support (Safari Compatible) */
+@supports (backdrop-filter: blur(15px)) or (-webkit-backdrop-filter: blur(15px)) {
 
     .manualLoginForm,
     .dialog,
-    .iconOsd,
     .mainDrawer,
     .toast,
     .emby-tabs-slider,
-    .videoOsdBottom .osdControls,
     .readOnlyContent .verticalSection,
     .button-submit,
     .upNextContainer,
     .selectionCommandsPanel,
     .playerStats-stats,
     .appfooter {
+        -webkit-backdrop-filter: blur(15px) !important; /* Safari */
         backdrop-filter: blur(15px) !important;
         background-color: rgba(var(--abyss-glass-tint), 0.69) !important;
     }
@@ -2014,24 +2012,27 @@ div[data-role="controlgroup"] a[data-role="button"]:last-child {
     .raised.cancel.block.btnForgotPassword.emby-button,
     .btnQuick,
     .pageTitle,
-    .videoOsdBottom,
     .headerButton {
+        -webkit-backdrop-filter: blur(15px) !important; /* Safari */
         backdrop-filter: blur(15px) !important;
     }
 
     .paper-icon-button-light:hover,
     #itemDetailPage .itemProgressBar,
     #dashboardPage .backgroundProgress>div {
+        -webkit-backdrop-filter: blur(4px); /* Safari */
         backdrop-filter: blur(4px);
     }
 
     .indicator {
+        -webkit-backdrop-filter: blur(2px); /* Safari */
         backdrop-filter: blur(2px);
     }
 
     @media all and (max-width: 75em) {
         .cardOverlayButtonIcon {
             background-color: rgba(0, 0, 0, 0.35) !important;
+            -webkit-backdrop-filter: blur(4px); /* Safari */
             backdrop-filter: blur(4px);
         }
     }
@@ -2039,6 +2040,7 @@ div[data-role="controlgroup"] a[data-role="button"]:last-child {
     #indexPage .itemProgressBar,
     .libraryPage .itemProgressBar,
     #itemDetailPage .itemProgressBar {
+        -webkit-backdrop-filter: blur(4px); /* Safari */
         backdrop-filter: blur(4px);
         background: rgba(0, 0, 0, 0.35) !important;
     }
@@ -2256,4 +2258,35 @@ div[data-role="controlgroup"] a[data-role="button"]:last-child {
 
 .verticalSection:nth-child(n+9) {
     animation: abyss-section-fade-up 0.7s var(--abyss-ease) both 0.45s;
+}
+
+/* --- ULTIMATE MEDIA PLAYER TRANSPARENCY FIX --- */
+
+/* 1. Kill the default gradient AND stop Safari from double-blurring the wrappers */
+.osdBottomPane,
+.videoOsdBottom {
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important; 
+    -webkit-backdrop-filter: none !important; /* Safari fix */
+}
+
+/* Nuke any gradient pseudo-elements just to be absolutely certain */
+.osdBottomPane::before,
+.osdBottomPane::after {
+    display: none !important;
+    background: none !important;
+}
+
+/* 2. Style ONLY the actual floating control bar */
+.videoOsdBottom .osdControls,
+.nowPlayingBar,
+.iconOsd {
+    background: rgba(var(--abyss-glass-tint), 0.20) !important; 
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important; /* Safari fix */
+    border-radius: 24px !important;
+    margin: 24px !important; 
 }
