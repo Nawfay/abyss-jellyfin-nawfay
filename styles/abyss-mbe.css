@@ -102,3 +102,29 @@
         abyss-heart-glow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     color: rgb(249, 38, 114) !important;
 }
+
+@media all and (max-width: 40em) {
+    #slides-container .play-text, #slides-container .trailer-text {
+        display: none;
+    }
+}
+
+#slides-container:focus,
+#slides-container:focus-visible {
+    outline: none !important;
+}
+
+#slides-container .pause-button,
+#slides-container .mute-button {
+    transition: top 0.25s ease;
+}
+
+#slides-container .pause-button i,
+#slides-container .mute-button i {
+    transition: font-size 0.25s ease;
+}
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    #slides-container .genre {
+        top: calc(50% + 16.5vh) !important;
+    }
+}

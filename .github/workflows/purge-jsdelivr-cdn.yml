@@ -2,6 +2,7 @@ name: purge-jsdelivr-cdn
 
 on:
   push:
+    branches: [main]
     paths:
       - 'abyss.css'
       - 'styles/abyss-je.css'
@@ -14,6 +15,6 @@ jobs:
       - name: Purge jsDelivr cache for abyss.css
         run: |
           curl -s "https://purge.jsdelivr.net/gh/AumGupta/abyss-jellyfin@main/abyss.css"
-          curl -s "https://purge.jsdelivr.net/gh/AumGupta/abyss-jellyfin@main/abyss-je.css"
-          curl -s "https://purge.jsdelivr.net/gh/AumGupta/abyss-jellyfin@main/abyss-mbe.css"
-          echo "CDN purge triggered for abyss.css"
+          curl -s "https://purge.jsdelivr.net/gh/AumGupta/abyss-jellyfin@main/styles/abyss-je.css"
+          curl -s "https://purge.jsdelivr.net/gh/AumGupta/abyss-jellyfin@main/styles/abyss-mbe.css"
+          echo "CDN purge triggered for abyss.css and styles/ overrides"

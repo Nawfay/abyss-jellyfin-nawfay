@@ -2,25 +2,29 @@
 
 # [Abyss](https://aumgupta.github.io/abyss-jellyfin/) for Jellyfin
 
-<!-- ![GitHub License](https://img.shields.io/github/license/AumGupta/abyss-jellyfin?style=for-the-badge) -->
+![GitHub License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![GitHub Release](https://img.shields.io/github/v/release/AumGupta/abyss-jellyfin?style=for-the-badge)
 ![jsDelivr Requests](https://img.shields.io/jsdelivr/gh/hm/AumGupta/abyss-jellyfin?style=for-the-badge&label=Usage&logo=none)
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/AumGupta/abyss-jellyfin/total?style=for-the-badge)](https://github.com/AumGupta/abyss-jellyfin/releases/latest)
-![GitHub Release](https://img.shields.io/github/v/release/AumGupta/abyss-jellyfin?style=for-the-badge)
 
 <img alt="Abyss Logo" src="docs/assets/favicon/apple-touch-icon.png" style="width: 72px;">
 
-A clean and minimal theme for Jellyfin with frosted glass surfaces, refined typography, smooth animations and a minimal design language that re-skins JellyFin almost exhaustively. [Video Demo](https://youtu.be/wgiHWH2oj3M)
+A clean and minimal theme for Jellyfin with frosted glass surfaces, refined typography, smooth animations and a minimal design language that re-skins JellyFin almost exhaustively. [Video Demo](https://youtu.be/CAjI7qgvJzo)
+
 
 
 <a href="https://aumgupta.github.io/abyss-jellyfin/">
   <img src="https://img.shields.io/badge/View%20%26%20Install-→-f5f5f7?style=for-the-badge&labelColor=2f2f2f" alt="Install" width=273.5 />
 </a>
+
 </div>
 
-<!-- [![Abyss Demo](docs/assets/images/demo-thumbnail.png)](https://youtu.be/wgiHWH2oj3M) -->
-<!-- ## Preview -->
+## Demo Video
+[![Abyss Demo](docs/assets/images/demo-thumbnail.png)](https://youtu.be/CAjI7qgvJzo)
 
-<a href="https://youtu.be/wgiHWH2oj3M">
+## Preview
+
+<a href="https://youtu.be/CAjI7qgvJzo">
   <img src="docs/assets/images/preview.png" style="width:100%;"/>
 </a>
 
@@ -28,45 +32,9 @@ A clean and minimal theme for Jellyfin with frosted glass surfaces, refined typo
 
 <summary><h2>See full preview</h2></summary>
 
-<a href="https://youtu.be/wgiHWH2oj3M">
+<a href="https://youtu.be/CAjI7qgvJzo">
   <img src="docs/assets/images/preview-full.png" style="width:100%;"/>
 </a>
-
-<!-- 
-### Cards & UI Details
-<table>
-  <tr>
-    <td rowspan="2" width="40%"><img src="docs/assets/images/5.png" style="width:100%;"/></td>
-    <td><img src="docs/assets/images/6.png" style="width:100%;"/></td>
-  </tr>
-  <tr>
-    <td><img src="docs/assets/images/4.png" style="width:100%;"/></td>
-  </tr>
-</table>
-
-### Libraries
-<table>
-  <tr>
-    <td width="50%"><img src="docs/assets/images/details-page.png" style="width:100%;"/></td>
-    <td width="50%"><img src="docs/assets/images/shows-2.png" style="width:100%;"/></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="docs/assets/images/movies-2.png" style="width:100%;"/></td>
-    <td width="50%"><img src="docs/assets/images/movies-1.png" style="width:100%;"/></td>
-  </tr>
-</table>
-
-### Music
-<table>
-  <tr>
-    <td width="50%"><img src="docs/assets/images/music1.png" style="width:100%;"/></td>
-    <td width="50%"><img src="docs/assets/images/music2.png" style="width:100%;"/></td>
-  </tr>
-    <td width="50%"><img src="docs/assets/images/music3.png" style="width:100%;"/></td>
-    <td width="50%"><img src="docs/assets/images/music4.png" style="width:100%;"/></td>
-  <tr>
-  </tr>
-</table> -->
 
 </details>
 
@@ -74,7 +42,8 @@ A clean and minimal theme for Jellyfin with frosted glass surfaces, refined typo
 
 ## Features
 
-- **One-click installer**: `abyss-setup-vX.X.X.exe` (Windows) and `abyss-setup-vX.X.X.sh` (Linux) configure your entire Jellyfin instance, CSS, dashboard theme, home section order, and Spotlight, all automatically. *The theme selector in display settings becomes locked to Dark after installation, which is intentional and expected.*
+- **One-click installer**: `abyss-setup-vX.X.X.exe` (Windows) and `abyss-setup-vX.X.X.sh` (Linux) configure your entire Jellyfin instance, CSS, client and dashboard themes, home section order, and Spotlight, all automatically. The theme selectors are intentionally locked to Dark after installation.
+- **Jellyfin 12 support**: styles both the Modern React/MUI interface and the Desktop (Legacy) interface using stable component classes and Jellyfin theme variables.
 - **Spotlight home banner**: a cinematic banner on your home screen showing your current Continue Watching item, complete with backdrop image, metadata pills (rating, runtime, score), and a resume play button.
 - **Frosted glass UI**: header, drawer, dialogs, toasts, and footer all use `backdrop-filter` blur for a layered, depth-rich interface
 - **Refined typography**: *Google Sans* throughout, with consistent weight and spacing
@@ -83,7 +52,7 @@ A clean and minimal theme for Jellyfin with frosted glass surfaces, refined typo
 - **Pill tab bar**: active tab highlighted with a filled pill indicator
 - **Every element targeted**: styling covers cards, indicators, sliders, checkboxes, form inputs, the media player OSD, now playing bar, chapter thumbnails, search page, cast thumbnails (9 responsive breakpoints), login page, detail pages, metadata manager, and the admin dashboard
 - **Responsive**: mobile layout tweaks, ultrawide support, and cast thumbnail scaling across all breakpoints
-- **Customisable**: three CSS variables let you retheme without touching the rest of the file
+- **Customisable**: CSS variables let you retheme without touching the rest of the file
 
 
 
@@ -108,7 +77,7 @@ For detailed steps go to the [Setup Guide](SETUP.md).
 Download the latest **`abyss-setup-vX.X.X.exe`** from the [Releases](https://github.com/AumGupta/abyss-jellyfin/releases/latest) page and run it. The installer will:
 
 - Apply the Abyss CSS to your Jellyfin server automatically
-- Set the dashboard theme to Dark
+- Set the client and dashboard themes to Dark
 - Configure your home screen sections in the correct order
 - Install the Spotlight add-on (cinematic home banner)
 - Restart Jellyfin when done
@@ -137,11 +106,20 @@ For detailed steps go to the [Setup Guide](SETUP.md).
 
 ### Docker Install
 
-The steps to install Abyss inside a docker container can be found the detailed [SETUP](SETUP.md) guide.
+The steps to install Abyss inside a docker container can be found in the detailed [SETUP](SETUP.md) guide.
 
 ### Manual Install
 
-The steps to apply Abyss etirely manually can be found the detailed [SETUP](SETUP.md) guide.
+The steps to apply Abyss entirely manually can be found in the detailed [SETUP](SETUP.md) guide.
+
+> Quick Preview: 
+> ```css
+> @import url('https://cdn.jsdelivr.net/gh/AumGupta/abyss-jellyfin@main/abyss.css');
+>```
+> Copy and Paste in the branding section in your jellyfin dashboard.
+
+> [!NOTE]
+> The quick preview import given above is useful only to have a look at how the theme looks, but to actually get the full feel of Abyss, follow all the steps in the SETUP guide.
 
 ### Plugin Support
 
@@ -159,6 +137,8 @@ Override any of these variables at the top of your **Custom CSS** field, after t
 :root {
     /* Accent colour: R, G, B only, no rgb() wrapper */
     --abyss-accent: 245, 245, 247;   /* default: near-white */
+    /* Same colour, space-separated for Jellyfin 12 / MUI */
+    --abyss-accent-channel: 245 245 247;
 
     /* Corner rounding applied globally */
     --abyss-radius: 24px;            /* default: 24px */
@@ -177,6 +157,17 @@ Override any of these variables at the top of your **Custom CSS** field, after t
 | Soft blue | `100, 160, 255` |
 | Teal | `50, 200, 180` |
 | Rose | `255, 100, 120` |
+
+### Lite mode
+
+For lower-power mobile, TV, and embedded clients, import the optional Lite override after the main theme:
+
+```css
+@import url('https://cdn.jsdelivr.net/gh/AumGupta/abyss-jellyfin@main/abyss.css');
+@import url('https://cdn.jsdelivr.net/gh/AumGupta/abyss-jellyfin@main/styles/abyss-lite.css');
+```
+
+Lite mode keeps the same colours, typography, spacing, and component styling while reducing blur, shadows, and entrance motion.
 
 > NOTE:
 > 
@@ -202,9 +193,13 @@ Override any of these variables at the top of your **Custom CSS** field, after t
 
 | Jellyfin version | Status |
 |---|---|
+| 12.1.x | Tested (Modern and Legacy web UI) |
 | 10.11.x | Tested |
 | 10.10.x | Should work |
 | Earlier | Untested |
+
+> [!NOTE] 
+> Jellyfin 12 features a new Material UI (MUI), implemented by *default* via `Settings`>`Display`>`Display Mode`>`Auto`. Since, this is a new interface, changes to Abyss are being constantly made to keep it at par with changes in Jellyfin versions. In case you want to keep the previous look of jellyfin (before versoin 12), they have provide a way to do so by `Settings`>`Display`>`Display Mode`>`Desktop (Legacy)`. Changes will take effect after manually reloading the web client.
 
 > [!IMPORTANT]
 > Abyss is built and tested for the **Jellyfin web client** accessed via a desktop browser. The mobile web experience includes layout tweaks but is not the primary focus. The Jellyfin desktop app (Jellyfin Media Player) and TV clients may work but are not specifically targeted and results may vary.
@@ -214,21 +209,14 @@ Override any of these variables at the top of your **Custom CSS** field, after t
 
 - The **Jellyfin admin dashboard** (`/dashboard`) is a separate React app and does not load Custom CSS. Abyss styles the main client only (home, libraries, detail pages, player).
 - Backdrop blur requires `backdrop-filter` support: Chrome, Edge, Safari, and Firefox 103+.
-- The theme selector in display settings will appear locked (greyed out) after installation via the installer, this is intentional. Abyss requires the Dark base theme to display correctly.
+- The installer selects the Dark base theme for the client and dashboard. Abyss requires Dark to display correctly, so the corresponding theme selectors in both Modern and Legacy web UI are intentionally shown as locked while Dark is active. Selecting another base theme is unsupported.
 
 </details>
 
-## Contributing & Support
+## Contributing
 
 Pull requests are welcome. For suggestions, feature requests, or bug reports, open an issue on the [Issues](https://github.com/AumGupta/abyss-jellyfin/issues) page. Please include your Jellyfin version and a screenshot where relevant.
 
 ## License
 
 Abyss is licensed under the [MIT License](https://github.com/AumGupta/abyss-jellyfin?tab=MIT-1-ov-file).
-
-## Credits
-
-- [Google Sans](https://fonts.google.com/specimen/Google+Sans) by Google, served via Google Fonts.
-- [Material Icons Round](https://fonts.google.com/icons) by Google, served via jsDelivr.
-- Built with inspiration from [Ultrachromic](https://github.com/CTalvio/Ultrachromic) by CTalvio.
-- Spotlight home banner concept inspired by [jellyfin-featured-content-bar](https://github.com/tedhinklater/Jellyfin-Featured-Content-Bar) by tedhinklater.

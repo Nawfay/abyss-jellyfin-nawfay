@@ -57,6 +57,19 @@ sudo ./abyss-setup-vX.X.X.sh
 > ## NOTE
 > Requires `curl` and `python3`, which are available by default on most Linux distributions.
 
+### Testing a fork or development branch
+
+The installer normally downloads its CSS and Spotlight files from the upstream `main` branch. Override the source explicitly when testing a fork or branch:
+
+```bash
+ABYSS_REPO=owner/abyss-jellyfin \
+ABYSS_BRANCH=branch-name \
+sudo -E ./setup.sh
+```
+
+PowerShell uses the same `ABYSS_REPO` and `ABYSS_BRANCH` environment variables.
+Use a branch name without `/`; jsDelivr treats the first slash after the branch as the start of the file path.
+
 </details>
 
 <!-- Docker -->
@@ -77,9 +90,10 @@ Download the [`abyss-spotlight.sh`](https://raw.githubusercontent.com/AumGupta/a
 
 ```bash
 mkdir -p ./jellyfin/config/custom-cont-init.d
-curl -o ./jellyfin/config/custom-cont-init.d/abyss-spotlight.sh
+curl -fsSL https://raw.githubusercontent.com/AumGupta/abyss-jellyfin/main/scripts/docker/abyss-spotlight.sh \
+  -o ./jellyfin/config/custom-cont-init.d/abyss-spotlight.sh
 chmod +x ./jellyfin/config/custom-cont-init.d/abyss-spotlight.sh
-````
+```
 
 **2. Mount the Volume in Docker Compose**
 You must explicitly mount the init script directory in your `docker-compose.yml` for the container to detect it:
@@ -168,6 +182,7 @@ Go to:
 * Set **Theme** to **Dark**
 
 > Abyss requires the Dark base theme to display correctly.
+> Jellyfin 12's default Modern interface and the Desktop (Legacy) interface are both supported.
 
 
 ## 3. Configure Home Sections (Recommended)
@@ -188,7 +203,29 @@ Arrange sections in this exact order:
 
 ### Step 4.1: Locate your Jellyfin web directory
 
-Typical locations (Windows): `C:\Program Files\Jellyfin\Server\jellyfin-web\`
+#### Typical locations:
+- **Windows** 
+  - `C:\Program Files\Jellyfin\Server\jellyfin-web\`
+  - `C:\Program Files (x86)\Jellyfin\Server\jellyfin-web`
+  - `C:\ProgramData\Jellyfin\Server\jellyfin-web`
+- **Linux (native packages)**
+  - `/usr/share/jellyfin/web`
+  - `/usr/lib/jellyfin/web`
+  - `/var/lib/jellyfin/web`
+  - `/opt/jellyfin/web`
+- **MacOS (Homebrew (intel and apple Silicon))**
+  - `/usr/local/share/jellyfin/web`
+  - `/opt/homebrew/share/jellyfin/web`
+  - `/opt/homebrew/opt/jellyfin/web`
+  - `/usr/local/opt/jellyfin/web`
+- **MacOS (App bundle)**
+  - `/Applications/Jellyfin.app/Contents/Resources/jellyfin-web`
+  - `$HOME/Applications/Jellyfin.app/Contents/Resources/  - jellyfin-web`
+  - `/Applications/Jellyfin.app/Contents/Resources/web`
+  - `$HOME/Applications/Jellyfin.app/Contents/Resources/web`
+- **Docker (jellyfin/jellfin (*official image*))** 
+  - `/jellyfin/jellyfin-web`
+    > Note: this is the path inside the container, not on the host. 
 
 ### Step 4.2: Create folders
 
@@ -204,7 +241,7 @@ Download these files from the repo:
 
 * [`scripts/spotlight/spotlight.html`](https://github.com/AumGupta/abyss-jellyfin/blob/main/scripts/spotlight/spotlight.html)
 * [`scripts/spotlight/spotlight.css`](https://github.com/AumGupta/abyss-jellyfin/blob/main/scripts/spotlight/spotlight.css)
-* [`scripts/spotlight/home-html.chunk.js`](https://github.com/AumGupta/abyss-jellyfin/blob/main/scripts/spotlight/home-html.chunk.js)
+* [`scripts/spotlight/spotlight-loader.js`](https://github.com/AumGupta/abyss-jellyfin/blob/main/scripts/spotlight/spotlight-loader.js)
 
 Place them in:
 
@@ -212,18 +249,13 @@ Place them in:
 jellyfin-web/ui/
 ```
 
-### Step 4.5: Patch Jellyfin home screen
+### Step 4.4: Load Spotlight
 
-1. In `jellyfin-web`, find a file like:
+Open `jellyfin-web/index.html` and add this line immediately before `</body>`:
 
+```html
+<script src="ui/spotlight-loader.js" data-abyss-spotlight></script>
 ```
-home-html.*.chunk.js
-```
-> (* will be a string of random characters like `home-html.83458cf8d6dc173356g4.chunk`)
-
-2. **Create a backup** of this file: Simply copy the orginal file somewhere for your backup.
-
-3. Replace the original file with: Copy content from `home-html.chunk.js (from /ui)` to the `home-html.*.chunk.js` file you found in `./jellyfin-web/`.
 
 ## 5. Restart Jellyfin
 
@@ -236,9 +268,9 @@ Restart your Jellyfin server.
 * Restart Jellyfin Media Player (if using desktop app)
 
 > ## NOTE
-> * The Spotlight feature requires modifying Jellyfin’s web files
+> * The Spotlight feature adds one marked script tag to Jellyfin's `index.html`
 > * Updates to Jellyfin may overwrite these changes
-> * If something breaks, restore your `.bak` file
+> * Re-run the installer after a Jellyfin update to restore Spotlight
 
 
 ## Tip
@@ -259,7 +291,7 @@ You can tweak colors, radius, and more here:
 
 
 <details>
-<summary><h2>Plugin Support</h2><br>If you use additional plugins, like <em>Jellyfin Enhanced</em>, <em>Media Bar Enhanced</em>, etc, then you can import it's <code>abyss-*css</code> override file.</summary>
+<summary><h2>Plugin Support</h2><br>If you use additional plugins, like <em>Jellyfin Enhanced</em>, <em>Media Bar Enhanced</em>, etc, then you can import its <code>abyss-*css</code> override file.</summary>
 
 Just copy the plugin specific import from the list and paste below the `@import` line of `abyss.css` in a series:
 
